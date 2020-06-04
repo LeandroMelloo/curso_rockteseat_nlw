@@ -1,0 +1,37 @@
+app.use(express.json()); // utilizar o formato express.json(), para que o express possa entender uma requisição do tipo JSON
+
+const search = String(req.query.search); // burlando o typescript, forçando que ele sempre será uma String. Pois o correto é retornar um array
+
+// Rota: Endereço completo da requisição
+// Recurso: Qual entidade estamos acessando do sistema
+
+// GET: Buscar uma ou mais informações do back-end
+// POST: Criar uma nova informação no back-end
+// PUT: Atualizar uma informaçõa existente no back-end
+// DELETE: Remover uma informação existente no back-end
+
+
+// POST: http://localhost:3333/users = Criar um usuario
+// GET: http://localhost:3333/users = Listar um usuario
+// GET: http://localhost:3333/users/5 = Listar todos os usuarios com ID 5
+
+// Request Param: Parâmetros que vem na própria rota que identificam um recurso (listar, atualizar ou deletar um unico registro)
+// Query Param: Parâmetros que vem na própria rota geralmente opcionais para filtros, paginação
+// Request Body: Parâmetros para criação/atualização de informações 
+
+// Mysql: SELECT * FROM users WHERE name = 'Diego'
+// Knex: knex('users).where('name', 'Diego').select('*') => utilizando o javascript
+
+// Conceito de Componentes, Propriedades, Estado e Imutabilidade
+import React, { useState } from 'React'
+import Header from './Header';
+
+const [counter, setCounter] = useState(0); // A função useState(), retorna sempre um array [valor do estado, função para atualizar o estado]
+
+function handleButtonClick() {
+setCounter(counter + 1);
+}
+<Header title={`Contador: ${counter}`} />
+<h1>{counter}</h1>
+<h1>{counter * 2}</h1>
+<button type="button" onClick={handleButtonClick}>Aumentar</button>
